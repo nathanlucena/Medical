@@ -5,7 +5,7 @@ interface ConnectType {
   client: MongoClient;
 }
 
-const client = new MongoClient(`${process.env.KEY}`, {
+const client = new MongoClient(process.env.KEY || "", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

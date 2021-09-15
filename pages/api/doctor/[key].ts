@@ -22,11 +22,12 @@ export default async (
 ): Promise<void> => {
   if (req.method === "GET") {
     const { db } = await connect();
-    const { name } = req.query;
+    const { key } = req.query;
+    const keyString = key.toString();
     const response: any = await db
       .collection("Doctor")
-      .findOne({ name: RegExp(`${name}`, "gi") });
-    console.log(response);
+      .findOne({ keyAct: keyString });
+    console.log(key);
     res.status(200).json(response);
   } else {
     res.status(400).json({ error: "Error" });
